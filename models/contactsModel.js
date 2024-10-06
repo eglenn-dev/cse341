@@ -1,4 +1,5 @@
 require('dotenv').config();
+const process = require('process');
 const { MongoClient } = require('mongodb');
 
 const contactsModel = [];
@@ -16,8 +17,8 @@ contactsModel.getAllContacts = async () => {
         console.error(e);
     } finally {
         await client.close();
-        return contactsData;
     }
+    return contactsData;
 }
 
 contactsModel.getContactById = async (id) => {
@@ -33,8 +34,8 @@ contactsModel.getContactById = async (id) => {
         console.error(e);
     } finally {
         await client.close();
-        return contactData;
     }
+    return contactData;
 }
 
 module.exports = contactsModel;
