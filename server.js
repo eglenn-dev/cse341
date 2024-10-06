@@ -1,14 +1,21 @@
-require('dotenv').config();
-const process = require('process');
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
-const port = process.env.PORT;
-const routes = require('./routes/index');
-const contactsRoute = require('./routes/contactsRoute');
+const port = 3000;
+const routes = require('./routes');
+const contactsRouter = require('./routes/contactsRoute');
 
-app.get('/', routes);
-app.use('/contacts', contactsRoute);
-app.use(routes);
+// Use body-parser middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use('/contacts', contactsRouter);
+app.use('/', routes);
+
+// Handle 404 - Not Found
+app.use((req, res) => {
+    res.status(404).send('404 - Not Found');
+});
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}/`);
