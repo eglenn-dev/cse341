@@ -1,0 +1,31 @@
+GET https://cse341.eglenn.app/contacts/
+###
+
+GET https://cse341.eglenn.app/contacts/6701efb61456540568bbf2b6
+###
+
+POST https://cse341.eglenn.app/contacts/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Spencer",
+    "lastName": "G",
+    "email": "spglenn@gmail.com",
+    "favoriteColor": "Navy Blue",
+    "birthday": "June 18"
+}
+###
+
+PUT https://cse341.eglenn.app/contacts/6701efb61456540568bbf2b6 HTTP/1.1
+Content-Type: application/json
+
+{
+    "firstName": "Spencer",
+    "lastName": "Glenn",
+    "email": "spglenn@gmail.com",
+    "favoriteColor": "Navy Blue",
+    "birthday": "June 18"
+}
+###
+
+DELETE https://cse341.eglenn.app/contacts/6701efb61456540568bbf2b6 HTTP/1.1
